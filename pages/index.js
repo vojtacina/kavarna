@@ -3,12 +3,11 @@ import Layout, {siteTitle} from '../components/layout'
 import utilStyles from '../styles/utils.module.scss'
 import Link from 'next/link'
 import Date from '../components/date'
-import {getSortedPostsData} from '../lib/posts'
-import {ActivePeopleAPI} from "../lib/people";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner';
 import useSWR from 'swr'
-import {stringify} from "gray-matter";
+import { Textfit } from 'react-textfit';
+import {getSortedPostsData} from "../lib/posts";
 
 
 export default function Home({allPostsData, customers, service}) {
@@ -132,7 +131,11 @@ function PeopleBlock(props) {
     return (<div className={utilStyles.facesContainer}>{data.map(({img_url, name}) => (
         <div key={name} className={utilStyles.facesFace}>
             <img className={utilStyles.line} src={img_url}></img>
-            <div class={utilStyles.text}>{name}</div>
+            <div class={utilStyles.text}>
+                <Textfit max="20" mode="single">
+                    {name}
+                </Textfit>
+            </div>
         </div>
     ))}</div>)
 

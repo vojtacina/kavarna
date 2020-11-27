@@ -14,6 +14,8 @@ export default async (req, res) => {
         }
     });
 
+    await prisma.$disconnect()
+
     res.json(people)
 
 }
