@@ -86,40 +86,11 @@ export async function getStaticProps() {
     }
 }
 
-// export async function getServerSideProps() {
-//
-//     const allPostsData = getSortedPostsData()
-//     const customers =  await ActivePeopleAPI("customers")
-//     const service =  await ActivePeopleAPI("service")
-//
-//
-//     // const service = await (JSON.stringify(RenderCustomers)).json()
-//
-//
-//
-//     return {
-//         props: {
-//             allPostsData,
-//             customers,
-//             service
-//         },
-//     }
-// }
-
-function Service() {
-    const { data, error } = useSWR('/api/service', fetch)
-
-    if (error) return <div>failed to load</div>
-    if (!data) return <div>loading...</div>
-    return <div>success!</div>
-}
-
 
 
 function PeopleBlock(props) {
 
     const what = props.type
-
     const fetcher = (...args) => fetch(...args).then(res => res.json());
     const { data, error, isValidating } = useSWR('/api/'+what, fetcher, { refreshInterval: 5000 })
 
