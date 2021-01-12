@@ -7,7 +7,7 @@ export default async (req, res) => {
 
 
     const response = await fetch('https://www.instagram.com/'+username+'/?__a=1');
-    const data = await response.json();
+    const data =  await response.json();
 
     if (data) {
         const full_name = data['graphql']['user']['full_name'];
